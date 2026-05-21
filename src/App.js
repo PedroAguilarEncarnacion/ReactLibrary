@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./js/Header";
+import { Item } from "./js/Item";
+import { TodoList } from "./js/TodoList";
+import "./App.css";
+import React from "react";
+
+const tasks = [
+  { text: "Revisar Exámenes", completed: false },
+  { text: "Escribir", completed: true },
+  { text: "Leer", completed: true },
+  { text: "ver tik tok", completed: false },
+  { text: "cocinar", completed: true },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Header completados={10} total={15} />
+      <Header completados={7} total={10} />
+      <TodoList>
+        {tasks.map(task=><Item key={task.text}
+        text={task.text}
+        completed={task.completed}/>)}
+      </TodoList>
+
+      {/*<Button/>*/}
+    </React.Fragment>
   );
 }
 
